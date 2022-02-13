@@ -1,0 +1,23 @@
+import cv2
+import matplotlib.pyplot as plt
+import numpy as np
+
+image = cv2.imread('codebozu.png',1)
+
+b, g, r = cv2.split(image)
+zeros = np.zeros(b.shape, np.uint8)
+
+def reddify(img):
+    red_channel = cv2.merge((zeros, zeros, r))
+    cv2.imshow('Red',red_channel)
+    cv2.imwrite('Red_Bozu.png', red_channel)
+
+def blueify(img):
+    blue_channel = cv2.merge((b, zeros, zeros))
+    cv2.imshow('Blue',blue_channel)
+    cv2.imwrite('Blue_Bozu.png', blue_channel)
+
+def greenify(img):
+    green_channel = cv2.merge((zeros, g, zeros))
+    cv2.imshow('Green', green_channel)
+    cv2.imwrite('Green_Bozu.png', green_channel)
