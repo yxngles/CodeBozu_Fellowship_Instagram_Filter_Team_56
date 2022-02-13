@@ -21,3 +21,7 @@ def greenify(img):
     green_channel = cv2.merge((zeros, g, zeros))
     cv2.imshow('Green', green_channel)
     cv2.imwrite('Green_Bozu.png', green_channel)
+
+reddify(image)
+blueify(image)
+greenify(image)
