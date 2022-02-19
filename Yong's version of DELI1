@@ -21,7 +21,36 @@ def greenify(img):
     green_channel = cv2.merge((zeros, g, zeros))
     cv2.imshow('Green', green_channel)
     cv2.imwrite('Green_Bozu.png', green_channel)
+    
+    
+def grayify(img):
+    r,g,b = cv2.split(image)
+    gray = 0.2989 * r +0.5870 * g + 0.1140 * b
+    gray_channel = cv2.merge((gray,gray,gray))
+    cv2.imshow('Grayscale image', gray_channel)
+    cv2.imwrite('GrayScale_Bozu.jpg', gray_channel)
 
+def negativify(img):
+    img = cv2.imread('codebozu.png',1)
+    height, width, _ = img.shape
+    for i in range (0, height-1):
+        for j in range(0, width-1):
+            pix = img[i,j]
+            pix[0] = 255 - pix[0]
+            pix[1] = 255 - pix[1]
+            pix[2] = 255 - pix[2]
+            img[i , j] = pix
+    cv2.imshow('Negative Image', img)
+    cv2.imwrite('Negative_Bozu.jpg', img)
+    
 reddify(image)
 blueify(image)
 greenify(image)
+grayify(image)
+negativify(image)
+
+
+
+cv2.waitKey(0)
+
+cv2.destroyAllWindows()
